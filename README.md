@@ -21,13 +21,19 @@
 沉淀《UI 风格 MD 文档》
 ```
 
-**第 1 步 · 风格选择** —— 5 种风格渲染同一份虚构博客内容，横向对比挑选：
+**Skill 产出的页面截图** —— 每一步都是真实渲染的 HTML 对比页，以下是内置风格库中三种风格的预览效果（同一份虚构博客内容）：
 
-![第 1 步：5 种风格对比预览](assets/preview-step1-styles.png)
+**风格 1 · 暖纸书卷风**（基准 book.oiloil.org：书架式首页、书封卡片网格、暖纸底 + 琥珀金）：
 
-**第 7 步 · 高保真首页** —— 前面所有选择汇成 3 版完整桌面端首页，选 1 后可继续微调：
+![风格 1：暖纸书卷风](assets/shot-style1.png)
 
-![第 7 步：3 版高保真首页对比](assets/preview-step7-hifi.png)
+**风格 2 · Bento 玻璃卡片风**（极光渐变底、磨砂玻璃卡、底部悬浮 Dock）：
+
+![风格 2：Bento 玻璃卡片风](assets/shot-style2.png)
+
+**风格 3 · IDE 编辑器风**（VS Code 拟物：文章=文件、行号语法高亮）：
+
+![风格 3：IDE 编辑器风](assets/shot-style3.png)
 
 - 所有候选渲染**同一份虚构博客内容**，保证对比公平
 - 实现步的 3 个候选必须在排版结构 / 色彩策略 / 装饰手法 / 密度节奏上**方向性不同**，禁止只改字号的同质选项
@@ -114,8 +120,9 @@ blog-style-designer/
     ├── styles.md                   # 5 种风格完整定义（tokens / 字体 / 形态 / 布局结构）
     └── style-guide-template.md     # 最终《UI 风格 MD 文档》的结构模板
 assets/
-├── preview-step1-styles.png        # 第 1 步风格对比预览截图
-└── preview-step7-hifi.png          # 第 7 步高保真对比预览截图
+├── shot-style1.png                 # 风格 1 暖纸书卷风预览截图
+├── shot-style2.png                 # 风格 2 Bento 玻璃卡片风预览截图
+└── shot-style3.png                 # 风格 3 IDE 编辑器风预览截图
 ```
 
 ## License
