@@ -52,40 +52,41 @@
 
 风格库可扩展：对某种风格不满意时，Skill 会生成 3 个气质有实质差异的变体供你重选，选定后沉淀回风格库。
 
-## 安装
+## 安装 · 使用：一句话交给 AI
 
-### WorkBuddy
+**不需要手动下载任何文件。** 把这个仓库地址发给任意具备 Agent 能力的大模型（WorkBuddy、Claude Code、Cursor、Codex 等），让它帮你装到本地即可：
 
-1. 下载或克隆本仓库：
-
-   ```bash
-   git clone https://github.com/lyh0371/blog-style-designer.git
-   ```
-
-2. 把 `blog-style-designer/` 文件夹整体复制到用户级技能目录：
-
-   ```bash
-   # macOS / Linux
-   cp -r blog-style-designer ~/.workbuddy/skills/
-
-   # Windows (PowerShell)
-   Copy-Item -Recurse blog-style-designer ~/.workbuddy/skills/
-   ```
-
-3. 重启对话即可生效。之后说「**做博客风格**」「**设计博客 UI**」「**博客风格生成**」即可触发。
-
-### Claude Code / 其他 Agent
-
-将 `blog-style-designer/` 文件夹放入对应 skills 目录即可，SKILL.md 含 frontmatter（`name` + `description`），遵循通用 Agent Skill 格式：
-
-```bash
-# Claude Code
-cp -r blog-style-designer ~/.claude/skills/
+```text
+请帮我安装这个博客风格设计 Skill：https://github.com/lyh0371/blog-style-designer
+安装到本地的技能目录，装好后告诉我怎么用。
 ```
 
-### 验证安装
+AI 会自动完成：克隆仓库 → 把 `blog-style-designer/` 放入对应技能目录（如 `~/.workbuddy/skills/`、`~/.claude/skills/`）→ 告诉你触发词。装好后，在对话中说「**做博客风格**」即可启动。
 
-目录结构应为：
+### 启动后怎么玩
+
+1. （可选）一句话描述你的博客定位，如「一个写技术随笔的个人博客，博客名叫 XX」——不说也会用虚构内容占位
+2. 跟着每步打开的 **HTML 对比预览页** 操作：
+   - 回复编号选择（如 `1`、`B`、`导航 2`）
+   - 或自由描述倾向（如「喜欢 2 但底色更暖一点」「A 的结构 + C 的配色」）
+3. 嫌麻烦随时说：
+   - 「**你帮我定**」—— AI 选定并说明理由，直接进入下一步
+   - 「**直接走**」—— 跳过当前实现步
+   - 「**回到第 X 步**」—— 保留其他选择，重跑某一步
+4. 第 7 步高保真页可反复微调，直到你说「**确认**」
+5. 最终产出 `blog-style-guide.md`（视觉规范 + 组件规范 + CSS Tokens），可直接丢给任何 AI / 开发者照着写页面
+
+全程约 7 轮交互。
+
+<details>
+<summary><b>手动安装（不用 AI，自己动手）</b></summary>
+
+```bash
+git clone https://github.com/lyh0371/blog-style-designer.git
+cp -r blog-style-designer ~/.workbuddy/skills/   # Claude Code 则放 ~/.claude/skills/
+```
+
+安装后的目录结构：
 
 ```
 ~/.workbuddy/skills/blog-style-designer/
@@ -95,21 +96,7 @@ cp -r blog-style-designer ~/.claude/skills/
     └── style-guide-template.md
 ```
 
-## 使用
-
-1. 在对话中说「**做博客风格**」启动 Skill
-2. （可选）一句话描述你的博客定位，如「一个写技术随笔的个人博客，博客名叫 XX」——不说也会用虚构内容占位
-3. 跟着每步打开的 **HTML 对比预览页** 操作：
-   - 回复编号选择（如 `1`、`B`、`导航 2`）
-   - 或自由描述倾向（如「喜欢 2 但底色更暖一点」「A 的结构 + C 的配色」）
-4. 嫌麻烦随时说：
-   - 「**你帮我定**」—— AI 选定并说明理由，直接进入下一步
-   - 「**直接走**」—— 跳过当前实现步
-   - 「**回到第 X 步**」—— 保留其他选择，重跑某一步
-5. 第 7 步高保真页可反复微调，直到你说「**确认**」
-6. 最终产出 `blog-style-guide.md`（视觉规范 + 组件规范 + CSS Tokens），可直接丢给任何 AI / 开发者照着写页面
-
-全程约 7 轮交互。
+</details>
 
 ## 文件结构
 
