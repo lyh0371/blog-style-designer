@@ -21,6 +21,14 @@
 沉淀《UI 风格 MD 文档》
 ```
 
+**第 1 步 · 风格选择** —— 5 种风格渲染同一份虚构博客内容，横向对比挑选：
+
+![第 1 步：5 种风格对比预览](assets/preview-step1-styles.png)
+
+**第 7 步 · 高保真首页** —— 前面所有选择汇成 3 版完整桌面端首页，选 1 后可继续微调：
+
+![第 7 步：3 版高保真首页对比](assets/preview-step7-hifi.png)
+
 - 所有候选渲染**同一份虚构博客内容**，保证对比公平
 - 实现步的 3 个候选必须在排版结构 / 色彩策略 / 装饰手法 / 密度节奏上**方向性不同**，禁止只改字号的同质选项
 - 随时可以说「你帮我定」（跳轮）、「回到第 X 步」（回退）、「直接走」（跳过实现步）
@@ -38,32 +46,64 @@
 
 风格库可扩展：对某种风格不满意时，Skill 会生成 3 个气质有实质差异的变体供你重选，选定后沉淀回风格库。
 
-## 一个真实产出示例
-
-本次开发即用该 Skill 完整走了一遍 7 步流程，最终产出示例见：
-
-- [`examples/blog-style-guide.md`](examples/blog-style-guide.md) — 《陶土暖阳 · 暖纸书卷博客 UI 风格指南》（配色表 / 组件规范 / CSS Tokens）
-- [`examples/step7-hifi.html`](examples/step7-hifi.html) — 第 7 步的 3 版高保真首页对比页（浏览器打开即可看）
-
 ## 安装
 
-**WorkBuddy**：把 `blog-style-designer/` 文件夹复制到用户级技能目录：
+### WorkBuddy
+
+1. 下载或克隆本仓库：
+
+   ```bash
+   git clone https://github.com/lyh0371/blog-style-designer.git
+   ```
+
+2. 把 `blog-style-designer/` 文件夹整体复制到用户级技能目录：
+
+   ```bash
+   # macOS / Linux
+   cp -r blog-style-designer ~/.workbuddy/skills/
+
+   # Windows (PowerShell)
+   Copy-Item -Recurse blog-style-designer ~/.workbuddy/skills/
+   ```
+
+3. 重启对话即可生效。之后说「**做博客风格**」「**设计博客 UI**」「**博客风格生成**」即可触发。
+
+### Claude Code / 其他 Agent
+
+将 `blog-style-designer/` 文件夹放入对应 skills 目录即可，SKILL.md 含 frontmatter（`name` + `description`），遵循通用 Agent Skill 格式：
+
+```bash
+# Claude Code
+cp -r blog-style-designer ~/.claude/skills/
+```
+
+### 验证安装
+
+目录结构应为：
 
 ```
 ~/.workbuddy/skills/blog-style-designer/
+├── SKILL.md
+└── references/
+    ├── styles.md
+    └── style-guide-template.md
 ```
-
-之后对话中说「做博客风格」「设计博客 UI」「博客风格生成」即可触发。
-
-**Claude Code / 其他 Agent**：将文件夹放入对应 skills 目录（`~/.claude/skills/` 等）即可，SKILL.md 含 frontmatter（name + description），遵循通用 Skill 格式。
 
 ## 使用
 
-```
-做博客风格
-```
+1. 在对话中说「**做博客风格**」启动 Skill
+2. （可选）一句话描述你的博客定位，如「一个写技术随笔的个人博客，博客名叫 XX」——不说也会用虚构内容占位
+3. 跟着每步打开的 **HTML 对比预览页** 操作：
+   - 回复编号选择（如 `1`、`B`、`导航 2`）
+   - 或自由描述倾向（如「喜欢 2 但底色更暖一点」「A 的结构 + C 的配色」）
+4. 嫌麻烦随时说：
+   - 「**你帮我定**」—— AI 选定并说明理由，直接进入下一步
+   - 「**直接走**」—— 跳过当前实现步
+   - 「**回到第 X 步**」—— 保留其他选择，重跑某一步
+5. 第 7 步高保真页可反复微调，直到你说「**确认**」
+6. 最终产出 `blog-style-guide.md`（视觉规范 + 组件规范 + CSS Tokens），可直接丢给任何 AI / 开发者照着写页面
 
-然后跟着每步的 HTML 对比页选编号即可。全程约 7 轮交互，产出一份 `blog-style-guide.md`。
+全程约 7 轮交互。
 
 ## 文件结构
 
@@ -73,9 +113,9 @@ blog-style-designer/
 └── references/
     ├── styles.md                   # 5 种风格完整定义（tokens / 字体 / 形态 / 布局结构）
     └── style-guide-template.md     # 最终《UI 风格 MD 文档》的结构模板
-examples/
-├── blog-style-guide.md             # 实跑产出示例
-└── step7-hifi.html                 # 高保真对比页示例
+assets/
+├── preview-step1-styles.png        # 第 1 步风格对比预览截图
+└── preview-step7-hifi.png          # 第 7 步高保真对比预览截图
 ```
 
 ## License
